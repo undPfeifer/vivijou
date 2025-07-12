@@ -1,0 +1,203 @@
+<template>    
+  <h1 class="logo">v----a</h1>
+
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+
+
+<div class="footer--container">
+        <div
+          v-for="post in posts"
+          :key="post.id"
+          
+        >
+          <NuxtLink :to="`/posts/${post.id}`">
+            <h1 v-html="post.title.rendered" class="bottom-link"></h1>
+
+          </NuxtLink>
+        </div>
+        </div>
+</template>
+
+<script setup>
+
+import { NuxtLink } from '#components'
+const { data: posts, pending, error } = await useAsyncData('posts', () => usePosts())
+
+
+  </script>
+
+<style scoped>
+  .footer--container{
+    padding: 60px 10px;
+    columns: 3;
+  }
+
+  .footer--container h1 {
+    line-height: 1;
+    margin-bottom: 12px;
+
+    font-size: 24px;
+    letter-spacing: 0px;
+    
+    
+    
+  }
+</style>
+
+<style>
+
+.bottom-link {
+  cursor: pointer;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.bottom-link:hover{
+  opacity: 70%;
+  transform: translateY(-2px);
+}
+
+.logo{
+  position: fixed;
+  right: 20px;
+  top: 8px;
+  z-index: 999;
+  background-color: #ffffff;
+  padding: 6px 6px;
+}
+
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style:none;
+  margin: 0px;
+  padding: 0px;
+}
+  p {
+    max-width: 70ch;
+    }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .router-link-active{
+    color: green;
+  }
+</style>
+
+<style>
+
+@font-face {
+  font-family: 'geist-bold';
+  src: url('/assets/font/geist/Geist-Bold.otf');
+}
+@font-face {
+  font-family: 'geist-semi';
+  src: url('/assets/font/geist/Geist-SemiBold.otf');
+}
+@font-face {
+  font-family: 'geist-medium';
+  src: url('/assets/font/geist/Geist-Medium.otf');
+}
+@font-face {
+  font-family: 'geist-regular';
+  src: url('/assets/font/geist/Geist_Regular.otf');
+}
+
+
+:root {
+  --green: #079210;
+  --black: #ffffff;
+  --bg: rgb(255, 255, 255);
+}
+
+a {
+  text-decoration: none;
+}
+
+  * {
+    
+    margin: 0px;
+    padding: 0px;
+
+    background-color: var(--bg);
+    
+    
+    
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--green);
+
+    cursor: url('/favicon.ico');
+    
+  }
+
+  p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .bold {
+    font-weight: 600;
+  }
+
+  .times {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .main-padding{
+    padding: 20px;
+  }
+
+  .papa {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+
+  .content--container{
+    max-width: 1100px;
+  }
+
+
+
+  h1 {
+    font-size: 50px;
+    line-height: 1;
+    letter-spacing: -2px;
+
+    margin-bottom: 20px;
+
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  h4.wp-block-heading {
+    color: #000 !important;
+  }
+
+
+</style>
