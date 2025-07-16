@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   modules: [
-    '@nuxt/content' ,
     '@nuxt/devtools' ,
     '@nuxt/image' 
 
@@ -13,8 +12,16 @@ export default defineNuxtConfig({
 
   ssr: true,
   target: 'static',
+
   app: {
-    baseURL: '/vivijou/', // 👈 Add this line
+    baseURL: '/vivijou/' // repo name
   },
+  nitro: {
+    preset: 'static'
+  },
+  image: {
+    // Use static images instead of runtime optimizer
+    provider: 'static'
+  }
 
 })
