@@ -3,13 +3,8 @@
     
     <div class="container">
       <section class="header--img_container">
-        <NuxtImg 
-        src="_XT40162.JPG" 
-        class="head-img" 
-        width="400" 
-        height="400" 
-        alt="description"
-      />
+        <img src="/_XT40162.JPG" alt="description" width="400" height="400" class="head-img" />
+
         
         <h1 class="title">
           Vivi Ammann <br />
@@ -85,14 +80,14 @@ const selectedTag = ref<null | number>(null) // null = all posts
 
 // Fetch tags for filter buttons
 const { data: tags, error: tagError } = await useAsyncData('tags', () =>
-  $fetch('http://vivi-jorunalismus.local/wp-json/wp/v2/tags')
+  $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/tags')
 )
 
 // Reactive fetch for posts
 const { data: posts, pending, error } = await useAsyncData(
   () => `posts-${selectedTag.value ?? 'all'}`, // key depends on selectedTag
   () => {
-    const baseUrl = 'http://vivi-jorunalismus.local/wp-json/wp/v2/posts?_embed'
+    const baseUrl = 'https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts?_embed'
     return selectedTag.value
       ? $fetch(`${baseUrl}&tags=${selectedTag.value}`)
       : $fetch(baseUrl)
