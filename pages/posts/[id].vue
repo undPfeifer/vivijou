@@ -9,9 +9,9 @@ const route = useRoute()
 const { data: post, pending, error } = await useAsyncData(
   `post-${route.params.id}`,
   () =>
-    $fetch(
-      `http://vivi-jorunalismus.local/wp-json/wp/v2/posts/${route.params.id}?_embed`
-    )
+  $fetch(
+  `https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts/${route.params.id}?_embed`
+)
 )
 
 
