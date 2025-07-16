@@ -1,0 +1,1 @@
+import{_ as s,c as l,o as n,a as t,x as o,F as a}from"./ClPuqn6u.js";const u={};function c(r,e){return n(),l(a,null,[e[0]||(e[0]=t("h1",null,"Articles Layout",-1)),e[1]||(e[1]=t("h1",null,"hi",-1)),o(r.$slots,"default")],64)}const d=s(u,[["render",c]]);export{d as default};
