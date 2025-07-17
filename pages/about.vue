@@ -20,7 +20,7 @@ Ich freue mich über jegliche Nachrichten oder Aufträge und sämtliche Hallos! 
    
 </template>
 
-<style>
+<style scoped>
     section {
         padding: 30px 20px;
 
