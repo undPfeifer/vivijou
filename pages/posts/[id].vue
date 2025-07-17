@@ -34,7 +34,7 @@ const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredIma
         <!-- Post Title -->
         <h1 v-html="title"></h1>
 
-        <!-- Featured Image -->
+        <!-- replace mit metadata -->
         <img v-if="featuredImage" :src="featuredImage" alt="Featured Image" />
 
         <!-- Lead Section -->

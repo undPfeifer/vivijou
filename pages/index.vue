@@ -22,14 +22,8 @@
 
 
     <!-- Posts -->
-    <div v-if="error" class="error">Failed to load posts.</div>
 
-    <div v-else-if="pending" class="loading"></div>
-
-    <div v-else class="all-posts">
-
-
-      <div class="tag--container">
+    <div class="tag--container">
       <p
         class="tag"
         :class="{ active: selectedTag === null }"
@@ -49,11 +43,24 @@
     </div>
 
 
+    <div v-if="error" class="error">Failed to load posts.</div>
+
+    <div v-else-if="pending" class="loading"></div>
+
+    <div v-else class="all-posts">
+
+
+
+
+
       <div
         v-for="post in posts"
         :key="post.id"
         class="post"
       >
+        <p class="eyebrow">   {{ post.tags.map(id => tags.find(t => t.id === id)?.name).join(', ') }}
+        </p>
+
         <h2 v-html="post.title.rendered"></h2>
         <div v-html="post.excerpt.rendered"></div>
         <NuxtLink
@@ -103,7 +110,10 @@ function filterPosts(tagId: number | null) {
 </script>
   
 <style scoped>
-
+  .eyebrow {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
 
   body {
     padding: 0px 0px 80px 0px;
@@ -111,6 +121,9 @@ function filterPosts(tagId: number | null) {
 </style>
 
 <style>
+
+
+
 .header--img_container {
   position: relative;
   width: 100%;
@@ -118,7 +131,7 @@ function filterPosts(tagId: number | null) {
   justify-content: center;
   background-color: rgb(255, 255, 255);
   margin-bottom: 20px;
-  padding: 120px 0px 80px 0px;
+  padding: 120px 0px 30px 0px;
 }
 
 .head-img {
@@ -135,13 +148,13 @@ function filterPosts(tagId: number | null) {
 }
 
 .tag--container {
-  margin-top: 20px;
+  margin-top: 0px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  gap: 8px;
   flex-wrap: wrap;
   padding-bottom: 10px;
-  border-bottom: 1px dotted var(--green);
+  border-bottom: 0px solid var(--green);
 }
 
 .tag {
@@ -215,7 +228,7 @@ function filterPosts(tagId: number | null) {
   }
 
   h2 {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'geist-medium';
     font-weight: 600;
   }
   

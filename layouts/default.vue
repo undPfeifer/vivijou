@@ -2,9 +2,9 @@
     <header> 
   <nav>
       <ul>
-          <li> <NuxtLink to="/"> artikel </NuxtLink></li>
+          <li> <NuxtLink to="/"> portfolio </NuxtLink></li>
           <li> <NuxtLink to="/about"> über mich </NuxtLink></li>
-          <li> <NuxtLink to="/articles"> kontakt </NuxtLink></li>
+          <li> <NuxtLink to="/kontakt"> kontakt </NuxtLink></li>
       </ul>
   </nav>
 </header>
