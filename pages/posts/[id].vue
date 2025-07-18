@@ -15,6 +15,7 @@ const { data: post, pending, error } = await useAsyncData(
 )
 
 
+
 // Get the title, featured image, and custom fields
 const title = computed(() => post.value?.title.rendered ?? 'No Title')
 const featuredImage = computed(() =>
@@ -23,6 +24,7 @@ const featuredImage = computed(() =>
 const leadMain = computed(() => post.value?.acf?.lead_main ?? 'Default lead main')
 const leadSub = computed(() => post.value?.acf?.lead_sub ?? 'Default lead sub')
 const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredImage.value) // use ACF or fallback
+const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann') // use ACF or fallback
 </script>
 
 <template>
@@ -42,6 +44,7 @@ const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredIma
           :text="leadMain"
           :sub="leadSub"
           :img="leadImage"
+          :credits="creditsSub"
         />
 
         <!-- Main Post Content -->
@@ -93,6 +96,11 @@ const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredIma
     text-align: center;
     color: red;
     }
+
+
+
+
+
 </style>
 
 <style scoped> 
@@ -113,6 +121,8 @@ h1 {
     .main-text {
         columns: 2;
     }
+
+
 
 
     @media (max-width: 700px) {

@@ -1,6 +1,7 @@
 <template>    
   <img src="/pingu1.webp" alt="" class="logo">
 
+
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -205,6 +206,44 @@ a {
   }
 
 
+  .wp-block-file{
+    font-family: Arial, Helvetica, sans-serif !important;
+    width: fit-content;
+    color: #079210 !important;
+
+    padding-bottom: 2px;
+
+    opacity: .75;
+
+
+    display: flex;
+    gap: 10px;
+
+    box-sizing: content-box;
+  }
+
+  .wp-block-file a {
+    color: #079210;
+    font-family: 'geist-regular'; 
+
+    font-size: 20px;
+
+    line-height: 1.2;
+  }
+
+  .wp-block-file a :nth-child(2) {
+    color: black;
+  }
+
+  .wp-block-file:hover{
+    border-bottom: #079210 solid 2px;
+padding-bottom: 0px;
+    opacity: 1;
+  }
+
+  .wp-block-file__button.wp-element-button {
+    color: #000;
+  }
 
   @media (max-width: 600px) {
     h1 {

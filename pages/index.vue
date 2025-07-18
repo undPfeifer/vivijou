@@ -58,11 +58,15 @@
         :key="post.id"
         class="post"
       >
-        <p class="eyebrow">   {{ post.tags.map(id => tags.find(t => t.id === id)?.name).join(', ') }}
-        </p>
+      <p class="eyebrow">
+  {{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }}
+</p>
 
         <h2 v-html="post.title.rendered"></h2>
-        <div v-html="post.excerpt.rendered"></div>
+        
+        <div v-html="post.acf?.lead_main"></div>
+      <!--   <div v-html="post.excerpt.rendered"></div>     -->  
+
         <NuxtLink
           :to="`/posts/${post.id}`"
           class="no-button-link"
@@ -83,6 +87,11 @@
 import { NuxtImg } from '#components'
 import { ref, watchEffect } from 'vue'
 
+const { data: categories, error: catError } = await useAsyncData('categories', () =>
+  $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
+)
+
+
 const selectedTag = ref<null | number>(null) // null = all posts
 
 // Fetch tags for filter buttons
@@ -94,7 +103,7 @@ const { data: tags, error: tagError } = await useAsyncData('tags', () =>
 const { data: posts, pending, error } = await useAsyncData(
   () => `posts-${selectedTag.value ?? 'all'}`, // key depends on selectedTag
   () => {
-    const baseUrl = 'https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts?_embed'
+    const baseUrl = 'https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts?_embed&per_page=100'
     return selectedTag.value
       ? $fetch(`${baseUrl}&tags=${selectedTag.value}`)
       : $fetch(baseUrl)

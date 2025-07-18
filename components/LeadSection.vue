@@ -3,6 +3,7 @@ defineProps<{
   text: string
   sub: string
   img: string
+  credits: string
 }>()
 </script>
 
@@ -12,7 +13,8 @@ defineProps<{
       <p>{{  text }}</p>
       <div class="row-two">
         <p class="small">{{ sub }}</p>
-        <img :src="img" alt="Lead Image" />
+        <p class="small"> {{ credits }}</p>
+        <!--    <img :src="img" alt="" />     --> 
       </div>
     </div>
   </section>
@@ -37,6 +39,8 @@ defineProps<{
         font-family: 'geist-medium';
         font-size: 12px;
         line-height: 1.2;
+        white-space: pre-line;
+
         
         
     }
