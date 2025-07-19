@@ -1,5 +1,5 @@
 <template>    
-  <img src="/pingu1.webp" alt="" class="logo">
+  <img src="/vivi-alex-illu-cutout.webp" alt="" class="logo">
 
 
   <NuxtLayout>

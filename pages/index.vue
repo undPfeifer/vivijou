@@ -120,9 +120,127 @@ function filterPosts(tagId: number | null) {
   selectedTag.value = tagId
 }
 
+
+
+
+
+
+
+
+
+
+//gsap 
+
+import gsap from 'gsap'
+  import ScrollTrigger from 'gsap/ScrollTrigger'
+
+
+import {onMounted} from 'vue'
+
+onMounted(() => {
+
+  gsap.registerPlugin(ScrollTrigger)
+
+
+///////--------  LLOADING ANIMATIONS ///////--------  
+
+
+  // --- Fade in header elements on page load
+  gsap.from(['.head-img', '.title'], {
+    y: 50,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power2.out',
+    stagger: 0.2 // fade image first, then title
+  })
+
+  // --- Fade in the tag filter bar
+  gsap.from('.tag--container', {
+    y: 20,
+    opacity: 0,
+    duration: 0.8,
+    delay: 0.8,
+    ease: 'power2.out'
+  })
+
+  // --- Stagger in the posts
+  gsap.from('.post', {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out',
+    delay: 1 // wait for header + tags
+  })
+
+///////--------  SCROLL ANIMATIONS ///////--------  
+
+  gsap.to('.title', {
+    scrollTrigger: {
+      trigger: 'body',    // the element that triggers the animation
+      start: 'top ',     // when the top of .title hits 80% of viewport height
+      end: 'bottom',
+      scrub: true,          // smooth scrubbing animation
+      markers: false        // set to true to debug
+    },
+    y: 400,                 // move down 100px initially
+    opacity: 0,             // fade in from 0
+  })
+
+
+  gsap.to('.head-img', {
+    scrollTrigger: {
+      trigger: 'body',    // the element that triggers the animation
+      start: 'top ',     // when the top of .title hits 80% of viewport height
+      end: 'bottom',
+      scrub: true,          // smooth scrubbing animation
+      markers: false        // set to true to debug
+    },
+    y: 200,                 // move down 100px initially
+    opacity: 0,             // fade in from 0
+  })
+
+  document.querySelectorAll('.post').forEach((post) => {
+  gsap.from(post, {
+    scrollTrigger: {
+      trigger: post,         // each post triggers its own animation
+      start: 'top bottom',      // animate when top of post hits 80% viewport
+      end: 'top bottom-=200px',
+      scrub: true,
+      markers: true         // set to true if you want to debug
+    },
+    y: 15,
+    opacity: 0,
+
+  });
+});
+
+
+gsap.to('.container',{
+    opacity: 1,
+    duration: 0.2,
+  })
+
+
+
+})
+
+
+
+
+
 </script>
+
+
   
 <style scoped>
+
+  .container {
+    opacity:0
+  }
+
+
+
   .eyebrow {
     font-size: 13px;
     margin-bottom: 4px;
@@ -149,7 +267,7 @@ function filterPosts(tagId: number | null) {
 }
 
 .head-img {
-  padding: 0px 0px 40px 0px;
+  padding: 20px 0px 40px 0px;
   position: relative;
   z-index: 99;
   background-color: transparent;
