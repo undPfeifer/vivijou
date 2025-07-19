@@ -142,36 +142,8 @@ onMounted(() => {
   gsap.registerPlugin(ScrollTrigger)
 
 
-///////--------  LLOADING ANIMATIONS ///////--------  
 
 
-  // --- Fade in header elements on page load
-  gsap.from(['.head-img', '.title'], {
-    y: 50,
-    opacity: 0,
-    duration: 1.2,
-    ease: 'power2.out',
-    stagger: 0.2 // fade image first, then title
-  })
-
-  // --- Fade in the tag filter bar
-  gsap.from('.tag--container', {
-    y: 20,
-    opacity: 0,
-    duration: 0.8,
-    delay: 0.8,
-    ease: 'power2.out'
-  })
-
-  // --- Stagger in the posts
-  gsap.from('.post', {
-    y: 20,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: 'power2.out',
-    delay: 1 // wait for header + tags
-  })
 
 ///////--------  SCROLL ANIMATIONS ///////--------  
 
@@ -207,7 +179,7 @@ onMounted(() => {
       start: 'top bottom',      // animate when top of post hits 80% viewport
       end: 'top bottom-=200px',
       scrub: true,
-      markers: true         // set to true if you want to debug
+      markers: false         // set to true if you want to debug
     },
     y: 15,
     opacity: 0,
