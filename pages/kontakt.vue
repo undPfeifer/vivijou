@@ -20,7 +20,7 @@
   
   // Base64-encoded email and phone
   const encodedEmail = 'dml2aWFuZS5hbW1hbm5AZ214LmNo' // your email here
-  const encodedPhone = 'MDc2NDE1ODA5Ng==' // "0764158096"
+  const encodedPhone = 'MDc2NDE1ODA5Ng==' // ""
   
   // reactive HTML holders
   const emailHtml = ref('')
@@ -43,7 +43,7 @@
   
   <style>
   .kontakt-link {
-    font-family: 'geist-medium';
+    font-family: 'geist-medium' ,  Arial, Helvetica, sans-serif;;
     font-size: 16px;
     border-bottom: 2px solid var(--green);
     cursor: pointer;
@@ -62,7 +62,7 @@
   }
   
   .geist {
-    font-family: 'geist-medium';
+    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;;
     font-size: 16px;
   }
   

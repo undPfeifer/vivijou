@@ -3,7 +3,11 @@
     
     <div class="container">
       <section class="header--img_container">
-        <img src="/_XT40162.JPG" alt="description" width="400" height="400" class="head-img" />
+        <!--    
+          <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
+        --> 
+        <div class="head-img_div" > </div>
+
 
         
         <h1 class="title">
@@ -125,7 +129,7 @@ function filterPosts(tagId: number | null) {
   }
 
   body {
-    padding: 0px 0px 80px 0px;
+    padding: 0px 0px 0px 0px;
   }
 </style>
 
@@ -145,6 +149,14 @@ function filterPosts(tagId: number | null) {
 
 .head-img {
   padding: 0px 0px 40px 0px;
+}
+
+.head-img_div{
+  background-color: rgba(234, 245, 248, 0);
+  width: 400px;
+  height: 200px;
+
+  border-radius: 100%;
 }
 
 .tag.active {
@@ -221,7 +233,7 @@ function filterPosts(tagId: number | null) {
   
   h1 {
     font-size: 80px;
-    font-family: 'geist-medium';
+    font-family: 'geist-medium' , Arial, Helvetica, sans-serif;
   }
 
   h1.title {
@@ -229,15 +241,16 @@ function filterPosts(tagId: number | null) {
     left: 20px;
     top: 50px;
     z-index: 99;
-    font-size: 60px;
-    font-family: 'geist-medium';
+    font-size: 80px;
+    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;
     text-align: left;
     background-color: transparent;
-    max-width: 10ch;
+    max-width: 100%;
+    width: 30ch;
   }
 
   h2 {
-    font-family: 'geist-medium';
+    font-family: 'geist-medium' , Arial, Helvetica, sans-serif;
     font-weight: 600;
   }
   

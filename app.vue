@@ -4,10 +4,10 @@
 
   <NuxtLayout>
     <NuxtPage />
+    <impressum />
   </NuxtLayout>
 
 
-<impressum />
 </template>
 
 <script setup>
@@ -44,8 +44,13 @@ li {
   .logo {
     font-size: 40px;
     margin-top: 0px;
-    width: 100px;
+    width: 70px;
     background-color: transparent;
+    transition: width 0.2s ease-out;
+  }
+
+  .logo:hover{
+    width: 71px;
   }
 </style>
 
@@ -207,7 +212,7 @@ a {
 
 
   .wp-block-file{
-    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: 'geist-medium' , Arial, Helvetica, sans-serif !important;
     width: fit-content;
     color: #079210 !important;
 
@@ -224,7 +229,7 @@ a {
 
   .wp-block-file a {
     color: #079210;
-    font-family: 'geist-regular'; 
+    font-family: 'geist-regular' , Arial, Helvetica, sans-serif; 
 
     font-size: 20px;
 
@@ -254,12 +259,13 @@ padding-bottom: 0px;
     .bottom-link {
       font-size: 20px !important;
     }
-
+    
     .footer--container {
       columns: 1 !important;
       ;
     }
   }
-
-
-</style>
+  
+  </style>
+  
+  

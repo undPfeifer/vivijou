@@ -16,6 +16,8 @@ defineProps<{
 
 <style scoped> 
     p {
+      white-space: pre-line;
+
         columns: 2;
     }
 

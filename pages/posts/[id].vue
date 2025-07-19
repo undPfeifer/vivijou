@@ -69,10 +69,15 @@ const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann') // 
         max-width: 100%;
     }
 
+    .post-content p {
+      margin: 0 0 1em;
+    }
+
     .post-content {
         margin-top: 2rem;
         line-height: 1.6;
         font-size: 1rem;
+        white-space: normal;
     }
 
     .back-link {
