@@ -5,14 +5,14 @@
       <section class="header--img_container">
         <!--    
           <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
-        --> 
-        <div class="head-img_div" > </div>
+          --> 
+          <img src="/titelbild-illu-3.webp" alt="description" width="400" height="600" class="head-img" />
 
 
         
         <h1 class="title">
           Vivi Ammann <br />
-          Journalismus Portfolio
+          Journalismus <br> Portfolio
         </h1>
 
       </section>
@@ -142,13 +142,18 @@ function filterPosts(tagId: number | null) {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgb(255, 255, 255);
+  align-items: center;
   margin-bottom: 20px;
   padding: 120px 0px 30px 0px;
+  z-index: 99;
 }
 
 .head-img {
   padding: 0px 0px 40px 0px;
+  position: relative;
+  z-index: 99;
+  background-color: transparent;
+
 }
 
 .head-img_div{
@@ -240,13 +245,14 @@ function filterPosts(tagId: number | null) {
     position: absolute;
     left: 20px;
     top: 50px;
-    z-index: 99;
-    font-size: 80px;
-    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;
+    z-index: 98;
+    font-size: 60px;
+    font-family: 'geist-semibold'  , Arial, Helvetica, sans-serif;
     text-align: left;
     background-color: transparent;
     max-width: 100%;
     width: 30ch;
+
   }
 
   h2 {
@@ -310,6 +316,38 @@ function filterPosts(tagId: number | null) {
     .all-posts {
     columns: 1;
 }
+
+h1.title {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    z-index: 98;
+    font-size: 12vw !important;
+
+    
+
+
+  }
+
+  .header--img_container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 140px 0px 0px 0px;
+  z-index: 99;
+}
+
+.head-img {
+  padding: 0px 0px 40px 0px;
+  position: relative;
+  z-index: 99;
+  background-color: transparent;
+
+}
+
   }
 </style>
   

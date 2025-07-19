@@ -14,7 +14,7 @@
 <style scoped>
 
 * {
-  transform: scale(0.9);
+  transform: scale(1);
 }
 
 section {

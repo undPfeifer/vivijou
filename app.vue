@@ -12,6 +12,9 @@
 
 <script setup>
 
+import { Analytics } from '@vercel/analytics/nuxt'
+
+
 import { NuxtLink } from '#components'
 const { data: posts, pending, error } = await useAsyncData('posts', () => usePosts())
 
