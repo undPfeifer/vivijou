@@ -2,11 +2,13 @@
   <img src="/vivi-alex-illu-cutout.webp" alt="" class="logo">
 
 
+
   <NuxtLayout>
     <NuxtPage />
     <impressum />
   </NuxtLayout>
 
+  <Analytics />
 
 </template>
 
