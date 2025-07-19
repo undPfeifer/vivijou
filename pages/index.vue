@@ -141,36 +141,55 @@ onMounted(() => {
 
   gsap.registerPlugin(ScrollTrigger)
 
+  gsap.set(['.title', '.head-img'], { y: -150, opacity: 0 })
 
 
+
+  gsap.to('.title', {
+    y: 0,
+    opacity: 1,
+    duration: 0.5,
+})
+
+gsap.to('.head-img', {
+    y: 0,
+    opacity: 1,
+    duration: 0.5,
+    delay: 0.25  // starts 0.25s after .title
+})
 
 
 ///////--------  SCROLL ANIMATIONS ///////--------  
 
-  gsap.to('.title', {
+gsap.fromTo('.title', 
+  { y: 0, opacity: 1 }, // from values
+  {
     scrollTrigger: {
-      trigger: 'body',    // the element that triggers the animation
-      start: 'top ',     // when the top of .title hits 80% of viewport height
+      trigger: 'body',
+      start: 'top',
       end: 'bottom',
-      scrub: true,          // smooth scrubbing animation
-      markers: false        // set to true to debug
+      scrub: true,
+      markers: false
     },
-    y: 400,                 // move down 100px initially
-    opacity: 0,             // fade in from 0
-  })
+    y: 400,
+    opacity: 0
+  }
+)
 
-
-  gsap.to('.head-img', {
+gsap.fromTo('.head-img',
+  { y: 0, opacity: 1 }, // from values  
+  {
     scrollTrigger: {
-      trigger: 'body',    // the element that triggers the animation
-      start: 'top ',     // when the top of .title hits 80% of viewport height
-      end: 'bottom',
-      scrub: true,          // smooth scrubbing animation
-      markers: false        // set to true to debug
+      trigger: 'body',
+      start: 'top',
+      end: 'bottom', 
+      scrub: true,
+      markers: false
     },
-    y: 200,                 // move down 100px initially
-    opacity: 0,             // fade in from 0
-  })
+    y: 200,
+    opacity: 0
+  }
+)
 
   document.querySelectorAll('.post').forEach((post) => {
   gsap.from(post, {
@@ -207,6 +226,8 @@ gsap.to('.container',{
   
 <style scoped>
 
+
+
   .container {
     opacity:0
   }
@@ -225,7 +246,10 @@ gsap.to('.container',{
 
 <style>
 
-
+.title {
+    opacity: 0;
+    transform: translateY(-150px);  /* ✅ Correct syntax */
+}
 
 .header--img_container {
   position: relative;
@@ -234,7 +258,7 @@ gsap.to('.container',{
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  padding: 120px 0px 30px 0px;
+  padding: 100px 0px 30px 0px;
   z-index: 99;
 }
 
@@ -334,7 +358,7 @@ gsap.to('.container',{
   h1.title {
     position: absolute;
     left: 20px;
-    top: 50px;
+    top: 0px;
     z-index: 98;
     font-size: 60px;
     font-family: 'geist-semibold'  , Arial, Helvetica, sans-serif;
