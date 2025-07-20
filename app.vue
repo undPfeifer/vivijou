@@ -1,5 +1,5 @@
 <template>    
-  <img src="/vivi-alex-illu-cutout.webp" alt="" class="logo">
+  <NuxtLink href="/"> <img src="/vivi-alex-illu-cutout.webp" alt="" class="logo"> </NuxtLink> 
 
 
 
@@ -19,6 +19,9 @@ import { Analytics } from '@vercel/analytics/nuxt'
 
 import { NuxtLink } from '#components'
 const { data: posts, pending, error } = await useAsyncData('posts', () => usePosts())
+
+
+
 
 
   </script>

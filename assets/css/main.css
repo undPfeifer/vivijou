@@ -1,0 +1,25 @@
+/* Slide in transition */
+.slide-enter-from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  .slide-enter-active {
+    transition: all 0.4s ease;
+  }
+  .slide-enter-to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  
+  .slide-leave-from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  .slide-leave-active {
+    transition: all 0.4s ease;
+  }
+  .slide-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  

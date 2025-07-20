@@ -6,8 +6,8 @@
         <!--    
           <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
           --> 
-          <img src="/titelbild-illu-3.webp" alt="description" width="400" height="600" class="head-img" />
-
+          
+          <img src="/vivi-alex-illu h800.webp" alt="description" width="400" height="600" class="head-img" />
 
         
         <h1 class="title">
@@ -137,26 +137,28 @@ import gsap from 'gsap'
 
 import {onMounted} from 'vue'
 
+
+
 onMounted(() => {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  gsap.set(['.title', '.head-img'], { y: -150, opacity: 0 })
+  const tl = gsap.timeline();
 
-
-
-  gsap.to('.title', {
+tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 }) // instant set
+  .to('.head-img', {
     y: 0,
     opacity: 1,
-    duration: 0.5,
-})
-
-gsap.to('.head-img', {
+    scale: 1,
+    duration: 0.5
+  })
+  .to('.title', {
     y: 0,
     opacity: 1,
-    duration: 0.5,
-    delay: 0.25  // starts 0.25s after .title
-})
+    scale: 1,
+    duration: 0.4
+  }, "-=0.25"); // starts 0.25s before .head-img finishes
+
 
 
 ///////--------  SCROLL ANIMATIONS ///////--------  
@@ -186,8 +188,8 @@ gsap.fromTo('.head-img',
       scrub: true,
       markers: false
     },
-    y: 200,
-    opacity: 0
+    y: 140,
+    opacity: 0.6
   }
 )
 
@@ -207,12 +209,6 @@ gsap.fromTo('.head-img',
 });
 
 
-gsap.to('.container',{
-    opacity: 1,
-    duration: 0.2,
-  })
-
-
 
 })
 
@@ -228,10 +224,6 @@ gsap.to('.container',{
 
 
 
-  .container {
-    opacity:0
-  }
-
 
 
   .eyebrow {
@@ -246,10 +238,7 @@ gsap.to('.container',{
 
 <style>
 
-.title {
-    opacity: 0;
-    transform: translateY(-150px);  /* ✅ Correct syntax */
-}
+
 
 .header--img_container {
   position: relative;
@@ -257,8 +246,8 @@ gsap.to('.container',{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 100px 0px 30px 0px;
+  margin-bottom: 0px;
+  padding: 100px 0px 10px 0px;
   z-index: 99;
 }
 
@@ -288,13 +277,18 @@ gsap.to('.container',{
 }
 
 .tag--container {
-  margin-top: 0px;
+  margin-top: -20px;
   display: flex;
   flex-direction: row;
   gap: 8px;
   flex-wrap: wrap;
   padding-bottom: 10px;
   border-bottom: 0px solid var(--green);
+  position: absolute;
+  left: 20px;
+  width: 300px;
+  z-index: 999;
+  
 }
 
 .tag {
@@ -360,9 +354,10 @@ gsap.to('.container',{
     left: 20px;
     top: 20px;
     z-index: 98;
-    font-size: 60px;
+    font-size: 70px;
     font-family: 'geist-semibold'  , Arial, Helvetica, sans-serif;
     text-align: left;
+    line-height: 0.9;
     background-color: transparent;
     max-width: 100%;
     width: 30ch;

@@ -25,7 +25,7 @@ defineProps<{
     div {
         display: grid;
         grid-template-columns: 6fr 6fr;
-        gap: 20px;
+        gap: 10%;
         margin-bottom: 00px;
         padding-bottom: 40px;
     }
@@ -48,6 +48,7 @@ defineProps<{
     .row-two {
         display: grid;
         grid-template-columns: 8fr 4fr;
+        
     }
 
     

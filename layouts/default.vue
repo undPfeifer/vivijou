@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { NuxtPage } from '#components';
+
+</script>
+
 <template>
     <header> 
   <nav>
@@ -8,7 +13,7 @@
       </ul>
   </nav>
 </header>
-    <slot />
+<slot />
 </template>
 
 <style scoped>

@@ -2,19 +2,24 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/devtools',
-    '@nuxt/image'
-  ],
+  modules: ['@nuxt/devtools', '@nuxt/image', 'v-gsap-nuxt'],
 
-  css: ['~/assets/css/global.css'],
+  css: [
+    '~/assets/css/global.css',
+    '@/assets/css/main.css'
+  ] ,
 
   ssr: true,
 
   // target: 'static',  // remove this line
 
   app: {
-    baseURL: '/vivijou/' // repo name
+    baseURL: '/vivijou/' , // repo name
+   
+      //pageTransition: {
+        //name: 'slide',
+        //mode: 'out-in' // wait for old page to leave
+      //}
   },
 
   nitro: {
