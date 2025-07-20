@@ -195,8 +195,8 @@ gsap.fromTo('.head-img',
   gsap.from(post, {
     scrollTrigger: {
       trigger: post,         // each post triggers its own animation
-      start: 'top bottom',      // animate when top of post hits 80% viewport
-      end: 'top bottom-=200px',
+      start: 'top 96%',      // animate when top of post hits 80% viewport
+      end: 'top bottom-=110px',
       scrub: true,
       markers: false         // set to true if you want to debug
     },
@@ -358,7 +358,7 @@ gsap.to('.container',{
   h1.title {
     position: absolute;
     left: 20px;
-    top: 0px;
+    top: 20px;
     z-index: 98;
     font-size: 60px;
     font-family: 'geist-semibold'  , Arial, Helvetica, sans-serif;
