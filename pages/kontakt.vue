@@ -2,6 +2,9 @@
     <body>
         <section>
       <h1>Kontakt</h1>
+
+        <img src="/kontakt.webp" alt="">
+
       <div>
         <p>Email</p>
         <p class="geist" v-html="emailHtml"></p>

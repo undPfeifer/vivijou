@@ -86,15 +86,17 @@
 
   
 </template>
-
 <script setup lang="ts">
 import { NuxtImg } from '#components'
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, nextTick, onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const { data: categories, error: catError } = await useAsyncData('categories', () =>
   $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
 )
-
 
 const selectedTag = ref<null | number>(null) // null = all posts
 
@@ -119,102 +121,103 @@ const { data: posts, pending, error } = await useAsyncData(
 function filterPosts(tagId: number | null) {
   selectedTag.value = tagId
 }
+// 🆕 Moved outside onMounted for reuse
+function postScrollAnimation() {
+  // Only run on client side
+  if (!process.client) return
+  
+  // 🧹 Clean up old triggers for posts
+  ScrollTrigger.getAll().forEach(trigger => {
+    if (trigger.trigger?.classList.contains('post')) {
+      trigger.kill()
+    }
+  })
 
-
-
-
-
-
-
-
-
-
-//gsap 
-
-import gsap from 'gsap'
-  import ScrollTrigger from 'gsap/ScrollTrigger'
-
-
-import {onMounted} from 'vue'
-
-
+  // Add animations for visible posts
+  document.querySelectorAll('.post').forEach((post) => {
+    // Ensure posts are visible by default
+    gsap.set(post, { y: 0, opacity: 1 })
+    
+    gsap.from(post, {
+      scrollTrigger: {
+        trigger: post,         // each post triggers its own animation
+        start: 'top 96%',      // animate when top of post hits 96% viewport
+        end: 'top bottom-=110px',
+        scrub: true,
+        markers: false         // set to true if you want to debug
+      },
+      y: 25,
+      opacity: 0,
+    });
+    console.log('z')
+  });
+}
 
 onMounted(() => {
+  // Only run on client side
+  if (!process.client) return
+  
+  const tl = gsap.timeline()
 
-  gsap.registerPlugin(ScrollTrigger)
+  tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 }) // instant set
+    .to('.head-img', {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.5
+    })
+    .to('.title', {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.4
+    }, "-=0.25") // starts 0.25s before .head-img finishes
 
-  const tl = gsap.timeline();
+  gsap.fromTo('.title', 
+    { y: 0, opacity: 1 }, // from values
+    {
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top',
+        end: 'bottom',
+        scrub: true,
+        markers: false
+      },
+      y: 400,
+      opacity: 0
+    }
+  )
 
-tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 }) // instant set
-  .to('.head-img', {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    duration: 0.5
-  })
-  .to('.title', {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    duration: 0.4
-  }, "-=0.25"); // starts 0.25s before .head-img finishes
+  gsap.fromTo('.head-img',
+    { y: 0, opacity: 1 }, // from values  
+    {
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top',
+        end: 'bottom',
+        scrub: true,
+        markers: false
+      },
+      y: 140,
+      opacity: 0.6
+    }
+  )
 
-
-
-///////--------  SCROLL ANIMATIONS ///////--------  
-
-gsap.fromTo('.title', 
-  { y: 0, opacity: 1 }, // from values
-  {
-    scrollTrigger: {
-      trigger: 'body',
-      start: 'top',
-      end: 'bottom',
-      scrub: true,
-      markers: false
-    },
-    y: 400,
-    opacity: 0
-  }
-)
-
-gsap.fromTo('.head-img',
-  { y: 0, opacity: 1 }, // from values  
-  {
-    scrollTrigger: {
-      trigger: 'body',
-      start: 'top',
-      end: 'bottom', 
-      scrub: true,
-      markers: false
-    },
-    y: 140,
-    opacity: 0.6
-  }
-)
-
-  document.querySelectorAll('.post').forEach((post) => {
-  gsap.from(post, {
-    scrollTrigger: {
-      trigger: post,         // each post triggers its own animation
-      start: 'top 96%',      // animate when top of post hits 80% viewport
-      end: 'top bottom-=110px',
-      scrub: true,
-      markers: false         // set to true if you want to debug
-    },
-    y: 15,
-    opacity: 0,
-
-  });
-});
-
-
-
+  postScrollAnimation() // Run animations for initial posts
 })
 
-
-
-
+// 🆕 Watch posts and run animations *after DOM updates*
+watchEffect(() => {
+  if (posts.value && process.client) {
+    nextTick(() => {
+      // Add a small delay to ensure DOM is fully rendered
+      setTimeout(() => {
+        postScrollAnimation() // Run animations for new/filtered posts
+        console.log('x')
+      }, 50)
+    })
+  }
+})
 
 </script>
 
@@ -282,10 +285,9 @@ gsap.fromTo('.head-img',
   flex-direction: row;
   gap: 8px;
   flex-wrap: wrap;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   border-bottom: 0px solid var(--green);
-  position: absolute;
-  left: 20px;
+  position: relative;
   width: 300px;
   z-index: 999;
   
