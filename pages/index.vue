@@ -89,18 +89,14 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
 import { ref, watchEffect, nextTick, onMounted } from 'vue'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-if (process.client) {
-  gsap.registerPlugin(ScrollTrigger)
-}
+// Reactive states
+const selectedTag = ref<null | number>(null) // null = all posts
 
+// Fetch categories
 const { data: categories, error: catError } = await useAsyncData('categories', () =>
   $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
 )
-
-const selectedTag = ref<null | number>(null) // null = all posts
 
 // Fetch tags for filter buttons
 const { data: tags, error: tagError } = await useAsyncData('tags', () =>
@@ -123,11 +119,9 @@ const { data: posts, pending, error } = await useAsyncData(
 function filterPosts(tagId: number | null) {
   selectedTag.value = tagId
 }
-// 🆕 Moved outside onMounted for reuse
-function postScrollAnimation() {
-  // Only run on client side
-  if (!process.client) return
-  
+
+// Function to animate posts
+function postScrollAnimation(gsap: any, ScrollTrigger: any) {
   // 🧹 Clean up old triggers for posts
   ScrollTrigger.getAll().forEach(trigger => {
     if (trigger.trigger?.classList.contains('post')) {
@@ -137,31 +131,33 @@ function postScrollAnimation() {
 
   // Add animations for visible posts
   document.querySelectorAll('.post').forEach((post) => {
-    // Ensure posts are visible by default
     gsap.set(post, { y: 0, opacity: 1 })
-    
+
     gsap.from(post, {
       scrollTrigger: {
-        trigger: post,         // each post triggers its own animation
-        start: 'top 96%',      // animate when top of post hits 96% viewport
+        trigger: post,
+        start: 'top 96%',
         end: 'top bottom-=110px',
         scrub: true,
-        markers: false         // set to true if you want to debug
+        markers: false
       },
       y: 25,
       opacity: 0,
-    });
-    console.log('z')
-  });
+    })
+  })
 }
 
-onMounted(() => {
-  // Only run on client side
-  if (!process.client) return
-  
+onMounted(async () => {
+  // Dynamically import GSAP & ScrollTrigger on client
+  const { default: gsap } = await import('gsap')
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Animate header image & title
   const tl = gsap.timeline()
 
-  tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 }) // instant set
+  tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 })
     .to('.head-img', {
       y: 0,
       opacity: 1,
@@ -173,10 +169,11 @@ onMounted(() => {
       opacity: 1,
       scale: 1,
       duration: 0.4
-    }, "-=0.25") // starts 0.25s before .head-img finishes
+    }, "-=0.25") // overlap animations slightly
 
-  gsap.fromTo('.title', 
-    { y: 0, opacity: 1 }, // from values
+  // Animate title & image on scroll
+  gsap.fromTo('.title',
+    { y: 0, opacity: 1 },
     {
       scrollTrigger: {
         trigger: 'body',
@@ -191,7 +188,7 @@ onMounted(() => {
   )
 
   gsap.fromTo('.head-img',
-    { y: 0, opacity: 1 }, // from values  
+    { y: 0, opacity: 1 },
     {
       scrollTrigger: {
         trigger: 'body',
@@ -205,23 +202,21 @@ onMounted(() => {
     }
   )
 
-  postScrollAnimation() // Run animations for initial posts
-})
+  postScrollAnimation(gsap, ScrollTrigger) // Run animations for initial posts
 
-// 🆕 Watch posts and run animations *after DOM updates*
-watchEffect(() => {
-  if (posts.value && process.client) {
-    nextTick(() => {
-      // Add a small delay to ensure DOM is fully rendered
-      setTimeout(() => {
-        postScrollAnimation() // Run animations for new/filtered posts
-        console.log('x')
-      }, 50)
-    })
-  }
+  // Watch posts and re-run animations on filter change
+  watchEffect(() => {
+    if (posts.value) {
+      nextTick(() => {
+        setTimeout(() => {
+          postScrollAnimation(gsap, ScrollTrigger)
+        }, 50)
+      })
+    }
+  })
 })
-
 </script>
+
 
 
   
