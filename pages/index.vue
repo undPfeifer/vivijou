@@ -90,9 +90,11 @@
 import { NuxtImg } from '#components'
 import { ref, watchEffect, nextTick, onMounted } from 'vue'
 import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const { data: categories, error: catError } = await useAsyncData('categories', () =>
   $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
