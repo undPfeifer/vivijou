@@ -7,7 +7,7 @@
           <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
           --> 
           
-          <img src="/vivi-alex-illu h800.webp" alt="description" width="400" height="600" class="head-img" />
+          <img src="/landing-w1000.webp" alt="description" width="800" height="700" class="head-img" />
 
         
         <h1 class="title">
@@ -250,7 +250,7 @@ watchEffect(() => {
   justify-content: center;
   align-items: center;
   margin-bottom: 0px;
-  padding: 100px 0px 10px 0px;
+  padding: 160px 0px 10px 0px;
   z-index: 99;
 }
 
