@@ -194,7 +194,7 @@ onMounted(async () => {
         scrub: true,
         markers: false
       },
-      y: 400,
+      y: 600,
       opacity: 0
     }
   )
@@ -257,7 +257,7 @@ h1.title {
     left: 20px;
     top: 20px;
     z-index: 98;
-    font-size: clamp(50px, 10vw, 80px);
+    font-size: clamp(50px, 12vw, 100px);
     font-family: 'Geist', sans-serif;
     font-weight: 600;
     text-align: left;
@@ -271,12 +271,13 @@ h1.title {
 
 .header--img_container {
   position: relative;
+  bottom: 0px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
   z-index: 99;
   height: 70vh;
   background-color: rgba(250, 235, 215, 0);
@@ -285,7 +286,7 @@ h1.title {
 .head-img {
   padding: 0px 0px 0px 0px;
   position: absolute;
-  bottom: 30px;
+  bottom: 80px;
 
   z-index: 99;
   background-color: transparent;
@@ -453,19 +454,25 @@ h1.title {
   }
 
   .header--img_container {
-  position: relative;
+    margin-top: 0px;
+    position: relative;
+  bottom: 0px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 140px 0px 0px 0px;
+  
+  padding: 0px 0px 0px 0px;
   z-index: 99;
-}
+  height: 60vh;
+  background-color: rgba(250, 235, 215, 0);
+  }
 
 .head-img {
-  padding: 0px 0px 40px 0px;
-  position: relative;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  bottom: 60px;
+
   z-index: 99;
   background-color: transparent;
 
@@ -473,10 +480,31 @@ h1.title {
 
   }
 
-  @media (min-width: 1000px) and (max-height: 700px) {
+  @media (min-width: 1000px) and (max-height: 800px) {
   .header--img_container {
-    margin-top: -60px;
+    margin-top: -70px;
+    position: relative;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 0px 0px 0px 0px;
+  z-index: 99;
+  height: 70vh;
+  background-color: rgba(250, 235, 215, 0);
   }
+  .head-img {
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  bottom: 20px;
+
+  z-index: 99;
+  background-color: transparent;
+
+}
+
 }
 
 </style>
