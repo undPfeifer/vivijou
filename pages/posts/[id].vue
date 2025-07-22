@@ -4,7 +4,6 @@
 
 
 
-
 import { useRoute } from 'vue-router'
 import LeadSection from '~/components/LeadSection.vue'
 import gsap from 'gsap'
@@ -65,13 +64,22 @@ onMounted(async () => {
     })
   })
 })
+
+
+useSeoMeta({
+  title: ()=> `${title.value} | vivijou` ,
+  ogTitle: ()=> `${title.value} | vivijou` ,
+  description: ()=> `${leadMain.value} | vivijou` ,
+  ogDescription: ()=> `${leadMain.value} | vivijou` ,
+  ogImage: () => `${featuredImage.value}`,
+  twitterCard: 'summary_large_image',
+})
+
+
 </script>
 
 <template>
 
-  <Head> 
-     <Title> vivijou | {{ title }} </Title>
-  </Head>
   <section class="main-padding papa">
     <div class="content--container">
       <div v-if="error" class="error">Failed to load post.</div>
