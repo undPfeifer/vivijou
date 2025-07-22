@@ -33,9 +33,9 @@
   function decodeIt(encoded, type) {
     const decoded = atob(encoded)
     if (type === 'email') {
-      emailHtml.value = `<a class="kontakt-link" href="mailto:${decoded}">${decoded}</a>`
+      emailHtml.value = `<a class="kontakt-link" href="mailto:${decoded}"> ${decoded}</a>`
     } else if (type === 'phone') {
-      phoneHtml.value = `<a class="kontakt-link" href="tel:${decoded}">${decoded}</a>`
+      phoneHtml.value = `<a class="kontakt-link" href="tel:${decoded}"> ${decoded}</a>`
     }
   }
   

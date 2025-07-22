@@ -7,7 +7,7 @@
           <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
           --> 
           
-          <img src="/landing-w1000.webp" alt="description" width="800" height="700" class="head-img" />
+          <img src="/landing-w700.webp" alt="description" width="400" height="700" class="head-img" />
 
         
         <h1 class="title">
@@ -66,7 +66,10 @@
   {{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }}
 </p>
 
-        <h2 v-html="post.title.rendered"></h2>
+          <NuxtLink :to="`/posts/${post.id}`"> 
+          
+          <h2 v-html="post.title.rendered"></h2>
+        </NuxtLink>
         
         <div v-html="post.acf?.lead_main"></div>
       <!--   <div v-html="post.excerpt.rendered"></div>     -->  
@@ -197,8 +200,8 @@ onMounted(async () => {
         scrub: true,
         markers: false
       },
-      y: 140,
-      opacity: 0.6
+      y: 190,
+      opacity: 1
     }
   )
 
@@ -238,7 +241,21 @@ onMounted(async () => {
 
 <style>
 
+h1.title {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    z-index: 98;
+    font-size: 8vw;
+    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;
+    text-align: left;
+    line-height: 0.9;
+    background-color: transparent;
+    max-width: 100%;
+    width: 30ch;
+    letter-spacing: -4px;
 
+  }
 
 .header--img_container {
   position: relative;
@@ -246,13 +263,13 @@ onMounted(async () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0px;
-  padding: 160px 0px 10px 0px;
+  
+  padding: 300px 0px 20px 0px;
   z-index: 99;
 }
 
 .head-img {
-  padding: 20px 0px 40px 0px;
+  padding: 20px 0px 70px 0px;
   position: relative;
   z-index: 99;
   background-color: transparent;
@@ -277,7 +294,6 @@ onMounted(async () => {
 }
 
 .tag--container {
-  margin-top: -20px;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -346,22 +362,10 @@ onMounted(async () => {
   h1 {
     font-size: 80px;
     font-family: 'geist-medium' , Arial, Helvetica, sans-serif;
+    letter-spacing: -1px;
   }
 
-  h1.title {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    z-index: 98;
-    font-size: 70px;
-    font-family: 'geist-semibold'  , Arial, Helvetica, sans-serif;
-    text-align: left;
-    line-height: 0.9;
-    background-color: transparent;
-    max-width: 100%;
-    width: 30ch;
 
-  }
 
   h2 {
     font-family: 'geist-medium' , Arial, Helvetica, sans-serif;

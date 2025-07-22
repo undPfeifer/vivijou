@@ -224,7 +224,8 @@ a {
     width: fit-content;
     color: #079210 !important;
 
-    padding-bottom: 2px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid var(--green);
 
     opacity: .75;
 
@@ -242,20 +243,18 @@ a {
     font-size: 20px;
 
     line-height: 1.2;
+    text-transform: lowercase;
   }
 
-  .wp-block-file a :nth-child(2) {
-    color: black;
-  }
+
 
   .wp-block-file:hover{
     border-bottom: #079210 solid 2px;
-padding-bottom: 0px;
+padding-bottom: 1px;
     opacity: 1;
   }
 
   .wp-block-file__button.wp-element-button {
-    color: #000;
   }
 
   @media (max-width: 600px) {

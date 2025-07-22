@@ -17,6 +17,12 @@ const { data: post, pending, error } = await useAsyncData(
     )
 )
 
+// Fetch categories
+const { data: categories, error: catError } = await useAsyncData('categories', () =>
+  $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
+)
+
+
 // Get the title, featured image, and custom fields
 const title = computed(() => post.value?.title.rendered ?? 'No Title')
 const featuredImage = computed(() =>
@@ -59,6 +65,7 @@ onMounted(async () => {
       <div v-else-if="pending" class="loading">Loading post...</div>
       <div v-else>
         <!-- Post Title -->
+         <p> {{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }} </p>
         <h1 v-html="title"></h1>
 
         <!-- replace mit metadata -->

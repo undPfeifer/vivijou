@@ -1,22 +1,25 @@
 <template>
     <div class="container"> 
-        <section class="header--img_container">
-        <img    
-        src="/_XT40162.JPG" 
-        alt="description" 
+        <section class="about--header">
+        
+            <h1>
+
+about <br> 
+mü
+
+</h1>
+        
+        
+            <img    
+        src="/vivi-about-01_w800.webp" 
+        alt="" 
         width="400" height="400" 
         class="head-img" 
         v-gsap.entrance.scale
         />
 
         
-        <h1 class="title">
-           <br />
-          <span>Grüezi</span>  Hallo Salut <br>
-          ich bin vivi <span> <br> Grafikerin</span> <br>
-          <span v-gsap.entrance.slide-left >journalistin</span>
-          
-        </h1>
+
 
 
       </section>
@@ -53,6 +56,17 @@ onMounted( () => {
 </script>
 
 <style scoped>
+
+
+    .about--header {
+        position: relative;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     section {
         padding: 30px 20px;
 
@@ -71,9 +85,10 @@ onMounted( () => {
     }
 
     h1 {
-        font-size: 40px !important;
         margin-bottom: 0px;
-        position: relative;
+        position: absolute;
         z-index: 10000;
+        left: -40px;
+        top: 40px;
     }
 </style>

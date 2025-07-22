@@ -2,7 +2,7 @@
   <section>
     <div>
       <!--  <p class="bold">impressum</p>  --> 
-      <p>alle inhalte* <span>✑</span> viviane ammann</p>
+      <p>inhalte <span>✑</span> viviane ammann</p>
       <p>  ✶   </p>
       <p>webdesign <span>☞</span> <a href="https://www.undpfeifer.ch"> &pfeifer</a></p>
     </div>
