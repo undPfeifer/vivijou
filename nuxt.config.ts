@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/devtools', '@nuxt/image', 'v-gsap-nuxt'],
+  modules: ['@nuxt/devtools', '@nuxt/image', 'v-gsap-nuxt' , '@nuxtjs/google-fonts'] ,
+  googleFonts: {
+    families: {
+      'Geist': [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    } ,
+  },
+
 
   css: [
     '~/assets/css/global.css',

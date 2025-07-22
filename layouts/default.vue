@@ -18,7 +18,8 @@ import { NuxtPage } from '#components';
 
 <style scoped>
 * {
-    font-family: 'geist-medium';
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
 
     font-size: 13px;
 

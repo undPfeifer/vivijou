@@ -7,7 +7,7 @@
           <img src="/storch_small.webp" alt="description" width="400" height="400" class="head-img" />
           --> 
           
-          <img src="/landing-w700.webp" alt="description" width="400" height="700" class="head-img" />
+          <img src="/landing-w700.webp" alt="description" width="400"  class="head-img" />
 
         
         <h1 class="title">
@@ -250,19 +250,22 @@ onMounted(async () => {
 
 <style>
 
+
+
 h1.title {
     position: absolute;
     left: 20px;
-    top: 40px;
+    top: 20px;
     z-index: 98;
-    font-size: 8vw;
-    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;
+    font-size: clamp(50px, 10vw, 80px);
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
     text-align: left;
     line-height: 0.9;
     background-color: transparent;
     max-width: 100%;
     width: 30ch;
-    letter-spacing: -4px;
+    letter-spacing: -1px;
 
   }
 
@@ -273,25 +276,22 @@ h1.title {
   justify-content: center;
   align-items: center;
   
-  padding: 300px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
   z-index: 99;
+  height: 70vh;
+  background-color: rgba(250, 235, 215, 0);
 }
 
 .head-img {
-  padding: 20px 0px 70px 0px;
-  position: relative;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  bottom: 30px;
+
   z-index: 99;
   background-color: transparent;
 
 }
 
-.head-img_div{
-  background-color: rgba(234, 245, 248, 0);
-  width: 400px;
-  height: 200px;
-
-  border-radius: 100%;
-}
 
 .tag.active {
   color: var(--green);
@@ -370,14 +370,16 @@ h1.title {
   
   h1 {
     font-size: 80px;
-    font-family: 'geist-medium' , Arial, Helvetica, sans-serif;
+    font-family: 'Geist', sans-serif;
+    
+
     letter-spacing: -1px;
   }
 
 
 
   h2 {
-    font-family: 'geist-medium' , Arial, Helvetica, sans-serif;
+    font-family: 'Geist', sans-serif;
     font-weight: 600;
   }
   
@@ -470,5 +472,12 @@ h1.title {
 }
 
   }
+
+  @media (min-width: 1000px) and (max-height: 700px) {
+  .header--img_container {
+    margin-top: -60px;
+  }
+}
+
 </style>
   

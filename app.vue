@@ -113,22 +113,7 @@ li {
 
 <style>
 
-@font-face {
-  font-family: 'geist-bold';
-  src: url('/assets/font/geist/Geist-Bold.otf');
-}
-@font-face {
-  font-family: 'geist-semi';
-  src: url('/assets/font/geist/Geist-SemiBold.otf');
-}
-@font-face {
-  font-family: 'geist-medium';
-  src: url('/assets/font/geist/Geist-Medium.otf');
-}
-@font-face {
-  font-family: 'geist-regular';
-  src: url('/assets/font/geist/Geist_Regular.otf');
-}
+
 
 
 :root {
