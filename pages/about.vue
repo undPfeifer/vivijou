@@ -34,6 +34,17 @@ Ich freue mich über jegliche Nachrichten oder Aufträge und sämtliche Hallos! 
 </template>
 
 <script setup>
+
+
+useHead({
+  title: 'über mich' ,
+  meta: [
+    {name: 'description' , content: 'Alle relevanten Information über mich und meine Ausbildungen, Studium und Lebenslauf'}
+  ]
+})
+
+
+
     import gsap from 'gsap'
     import ScrollTrigger from 'gsap/ScrollTrigger'
 

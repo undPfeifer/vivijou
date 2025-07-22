@@ -1,4 +1,10 @@
 <script setup lang="ts">
+
+
+
+
+
+
 import { useRoute } from 'vue-router'
 import LeadSection from '~/components/LeadSection.vue'
 import gsap from 'gsap'
@@ -33,6 +39,9 @@ const leadSub = computed(() => post.value?.acf?.lead_sub ?? 'Default lead sub')
 const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredImage.value) // use ACF or fallback
 const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann') // use ACF or fallback
 
+
+//gsap
+
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(async () => {
@@ -59,6 +68,10 @@ onMounted(async () => {
 </script>
 
 <template>
+
+  <Head> 
+     <Title> vivijou | {{ title }} </Title>
+  </Head>
   <section class="main-padding papa">
     <div class="content--container">
       <div v-if="error" class="error">Failed to load post.</div>

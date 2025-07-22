@@ -90,6 +90,15 @@
   
 </template>
 <script setup lang="ts">
+
+useHead({
+  title: 'Vivi Ammann Portfolio' ,
+  meta: [
+    {name: 'description' , content: 'Viviane Ammanns Journalismus Portfolio , Zürich Schweiz'}
+  ]
+})
+
+
 import { NuxtImg } from '#components'
 import { ref, watchEffect, nextTick, onMounted } from 'vue'
 

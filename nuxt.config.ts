@@ -15,11 +15,19 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: '/vivijou/' , // repo name
-   
+    head : {
+      
+        title: 'Vivi Ammann Portfolio', // default fallback title
+        htmlAttrs: {
+          lang: 'de',
+        }, 
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+    }
       //pageTransition: {
         //name: 'slide',
         //mode: 'out-in' // wait for old page to leave
       //}
+
   },
 
   nitro: {

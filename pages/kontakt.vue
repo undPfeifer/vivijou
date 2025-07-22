@@ -19,6 +19,17 @@
   </template>
   
   <script setup>
+
+
+useHead({
+  title: 'kontakt' ,
+  meta: [
+    {name: 'description' , content: 'Kontaktseite mit Telefonnummer und Email , Viviane Ammann , Journalismus Studentin ZHAW Zürich'}
+  ]
+})
+
+
+
   import { ref } from 'vue'
   
   // Base64-encoded email and phone
