@@ -489,14 +489,16 @@ h1.title {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  
   
   padding: 0px 0px 0px 0px;
   z-index: 99;
-  height: 70vh;
+  height: 86vh;
   background-color: rgba(250, 235, 215, 0);
   }
   .head-img {
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 40px 0px;
   position: absolute;
   bottom: 20px;
 
