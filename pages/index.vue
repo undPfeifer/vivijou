@@ -95,7 +95,7 @@
 useHead({
   title: 'Vivi Ammann Portfolio' ,
   meta: [
-    {name: 'description' , content: 'Viviane Ammanns Journalismus Portfolio , Zürich Schweiz'}
+    {name: 'description' , content: 'Viviane Ammann Journalismus Portfolio , Zürich Schweiz'}
   ]
 })
 
@@ -170,8 +170,8 @@ onMounted(async () => {
   // Animate header image & title
   const tl = gsap.timeline()
 
-  tl.set(['.title', '.head-img'], { scale: 1, y: 50, opacity: 0 })
-    .to('.head-img', {
+  tl.set(['.title', '.head-img'], { visibility: 'visible', scale: 1, y: 50, opacity: 0 })
+  .to('.head-img', {
       y: 0,
       opacity: 1,
       scale: 1,
@@ -235,6 +235,10 @@ onMounted(async () => {
   
 <style scoped>
 
+.head-img, .title {
+  visibility: hidden;
+}
+
 
 
 
@@ -258,7 +262,7 @@ h1.title {
     left: 0px;
     top: 20px;
     z-index: 98;
-    font-size: clamp(50px, 10vw, 100px);
+    font-size: clamp(50px, 12vw, 80px);
     font-family: 'Geist', sans-serif;
     font-weight: 600;
     text-align: left;
@@ -278,7 +282,7 @@ h1.title {
   justify-content: center;
   align-items: center;
   
-  padding: 0px 0px 0px 0px;
+  padding: 40px 0px 0px 0px;
   z-index: 99;
   height: 70vh;
   background-color: rgba(250, 235, 215, 0);
