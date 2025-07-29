@@ -262,7 +262,7 @@ h1.title {
     left: 0px;
     top: 20px;
     z-index: 98;
-    font-size: clamp(50px, 12vw, 80px);
+    font-size: clamp(30px, 12vw, 80px);
     font-family: 'Geist', sans-serif;
     font-weight: 600;
     text-align: left;
@@ -451,7 +451,7 @@ h1.title {
     left: 0px;
     top: 20px;
     z-index: 98;
-    font-size: 80px !important;
+    font-size: 14vw !important;
 
     
 
@@ -467,7 +467,7 @@ h1.title {
   justify-content: center;
   align-items: center;
   
-  padding: 0px 0px 0px 0px;
+  padding: 100px 0px 0px 0px;
   z-index: 99;
   height: 60vh;
   background-color: rgba(250, 235, 215, 0);
