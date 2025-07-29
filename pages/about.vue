@@ -4,8 +4,8 @@
         
             <h1>
 
-about <br> 
-mü
+über <br> 
+mich
 
 </h1>
         
@@ -24,9 +24,9 @@ mü
 
       </section>
 
-      <p v-gsap.entrance.slide-bottom>Grüeziwohl! Mein Name ist Viviane (aber lieber Vivi) Ammann, ich bin Grafikerin aus Zürich und wandle seit 1998 auf dieser Welt. Meine dreht sich um Gestalten, Kaffeetrinken und die Suche nach dem Sinn des Lebens – Grafik kommt da schon nahe ran, sie fordert mich, macht mir den Alltag spannend und erfüllt mich mit Zufriedenheit. 
-Meine Kompetenzen liegen im grafischen, digitalen, sowie im illustrativen und fotografischen Bereich und ich bin stets damit beschäftigt, meine Fähigkeiten zu erweitern. Als Grafikerin gross geworden bin ich in einem kleinen Atelier, dabei lernte ich gutes Teamwork schätzen aber auch eigenständig zu arbeiten und Verantwortung zu übernehmen. Projekte kann ich von der Ideenfindung bis hin zum Druckauftrag begleiten.
-Ich freue mich über jegliche Nachrichten oder Aufträge und sämtliche Hallos! Lg, Vivi</p>
+      <p v-gsap.entrance.slide-bottom>
+        Du seist gegrüsst! Ich bin Viviane (aber lieber Vivi) Ammann und studiere Kommunikation an der Zürcher Hochschule für angewandte Wissenschaften (ZHAW) mit der Vertiefung Journalismus. Meine neugier und unermüdliche Lust zum Schreiben liess mich 2023 meine Arbeit als Grafikerin niederlegen und in die Welt der geschriebenen Medien abtauchen. Besonders interessieren mich die kleinen, vermeintlich unwichtigen Geschichten, die Grosses über uns als Gesellschaft aussagen. Diese erzähle ich am liebsten in Form von Reportagen oder Porträts.
+      </p>
 
     </div>
 
@@ -72,6 +72,8 @@ onMounted( () => {
     .about--header {
         position: relative;
         width: 100%;
+        padding: 30px 0px 0px 0px;
+        height: 440px;
 
         display: flex;
         justify-content: center;
@@ -96,10 +98,20 @@ onMounted( () => {
     }
 
     h1 {
-        margin-bottom: 0px;
+        background-color: transparent;
+
+
+
         position: absolute;
+        left: 10px;
+        margin-bottom: 0px;
         z-index: 10000;
-        left: -40px;
         top: 40px;
     }
+
+      
+  .geist {
+    font-family: 'geist-medium'  , Arial, Helvetica, sans-serif;;
+    font-size: 16px;
+  }
 </style>

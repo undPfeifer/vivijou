@@ -13,6 +13,7 @@
         <h1 class="title">
           Vivi Ammann <br />
           Journalismus <br> Portfolio
+
         </h1>
 
       </section>
@@ -119,7 +120,7 @@ const { data: tags, error: tagError } = await useAsyncData('tags', () =>
 const { data: posts, pending, error } = await useAsyncData(
   () => `posts-${selectedTag.value ?? 'all'}`, // key depends on selectedTag
   () => {
-    const baseUrl = 'https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts?_embed&per_page=100'
+    const baseUrl = 'https://acidehov.myhostpoint.ch/wp-json/wp/v2/posts?per_page=100&_fields=id,title,acf,excerpt,tags,categories'
     return selectedTag.value
       ? $fetch(`${baseUrl}&tags=${selectedTag.value}`)
       : $fetch(baseUrl)
@@ -240,7 +241,7 @@ onMounted(async () => {
 
   .eyebrow {
     font-size: 13px;
-    margin-bottom: 4px;
+    margin-bottom: -1px;
   }
 
   body {
@@ -254,10 +255,10 @@ onMounted(async () => {
 
 h1.title {
     position: absolute;
-    left: 20px;
+    left: 0px;
     top: 20px;
     z-index: 98;
-    font-size: clamp(50px, 12vw, 100px);
+    font-size: clamp(50px, 10vw, 100px);
     font-family: 'Geist', sans-serif;
     font-weight: 600;
     text-align: left;
@@ -446,7 +447,7 @@ h1.title {
     left: 0px;
     top: 20px;
     z-index: 98;
-    font-size: 12vw !important;
+    font-size: 80px !important;
 
     
 
