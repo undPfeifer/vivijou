@@ -467,7 +467,7 @@ h1.title {
   justify-content: center;
   align-items: center;
   
-  padding: 100px 0px 0px 0px;
+  padding: 60px 0px 0px 0px;
   z-index: 99;
   height: 60vh;
   background-color: rgba(250, 235, 215, 0);

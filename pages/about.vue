@@ -11,9 +11,9 @@ mich
         
         
             <img    
-        src="/vivi-about-01_w800.webp" 
+        src="/vivi-about-800-2.webp" 
         alt="" 
-        width="400" height="400" 
+        width="600" height="600" 
         class="head-img" 
         v-gsap.entrance.scale
         />
@@ -93,7 +93,7 @@ onMounted( () => {
 
     img {
         margin-top: 20px;
-        width: 300px;
+        width: 500px;
         z-index: 1;
     }
 
