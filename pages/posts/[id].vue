@@ -1,19 +1,22 @@
 <script setup lang="ts">
-
-
-
-
-
 import { useRoute } from 'vue-router'
 import LeadSection from '~/components/LeadSection.vue'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, computed } from 'vue'
+
+// SEO
+useSeoMeta({
+  title: () => `${title.value} | vivijou`,
+  ogTitle: () => `${title.value} | vivijou`,
+  description: () => `${leadMain.value} | vivijou`,
+  ogDescription: () => `${leadMain.value} | vivijou`,
+  ogImage: () => `${featuredImage.value}`,
+  twitterCard: 'summary_large_image',
+})
 
 // Get the post ID from the URL
 const route = useRoute()
 
-// Fetch the post data from WP REST API
+// Fetch post data from WordPress
 const { data: post, pending, error } = await useAsyncData(
   `post-${route.params.id}`,
   () =>
@@ -27,56 +30,45 @@ const { data: categories, error: catError } = await useAsyncData('categories', (
   $fetch('https://acidehov.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
 )
 
-
-// Get the title, featured image, and custom fields
+// Computed fields from ACF and post
 const title = computed(() => post.value?.title.rendered ?? 'No Title')
 const featuredImage = computed(() =>
   post.value?._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? ''
 )
 const leadMain = computed(() => post.value?.acf?.lead_main ?? 'Default lead main')
 const leadSub = computed(() => post.value?.acf?.lead_sub ?? 'Default lead sub')
-const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredImage.value) // use ACF or fallback
-const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann') // use ACF or fallback
+const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredImage.value)
+const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann')
 
-
-//gsap
-
-gsap.registerPlugin(ScrollTrigger)
-
+// Animate images on scroll using GSAP (client only)
 onMounted(async () => {
-  // Wait for DOM to render
-  await nextTick()
+  if (process.client) {
+    const gsapModule = await import('gsap')
+    const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+    const gsap = gsapModule.default
+    gsap.registerPlugin(ScrollTrigger)
 
-  // Animate each image separately
-  document.querySelectorAll('img').forEach((img) => {
-    gsap.from(img, {
-      scrollTrigger: {
-        trigger: img,
-        start: 'top bottom', // when top of img hits 80% of viewport
-        end: 'top 92%', // optional
-        toggleActions: 'play none none reverse', // play on enter, reverse on leave
-        scrub: false, // no scrubbing, just play once
-        markers: false // set to true for debugging
-      },
-      opacity: 0,
-      duration: 0.2,
-      y: 50,
+    await nextTick()
+
+    document.querySelectorAll('img').forEach((img) => {
+      gsap.from(img, {
+        scrollTrigger: {
+          trigger: img,
+          start: 'top bottom',
+          end: 'top 92%',
+          toggleActions: 'play none none reverse',
+          scrub: false,
+          markers: false
+        },
+        opacity: 0,
+        duration: 0.2,
+        y: 50,
+      })
     })
-  })
+  }
 })
-
-
-useSeoMeta({
-  title: ()=> `${title.value} | vivijou` ,
-  ogTitle: ()=> `${title.value} | vivijou` ,
-  description: ()=> `${leadMain.value} | vivijou` ,
-  ogDescription: ()=> `${leadMain.value} | vivijou` ,
-  ogImage: () => `${featuredImage.value}`,
-  twitterCard: 'summary_large_image',
-})
-
-
 </script>
+
 
 <template>
 
