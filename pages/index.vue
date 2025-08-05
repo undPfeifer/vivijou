@@ -487,7 +487,7 @@ h1.title {
 
   @media (min-width: 1000px) and (max-height: 800px) {
   .header--img_container {
-    margin-top: -70px;
+    margin-top: -30px;
     position: relative;
   bottom: 0px;
   width: 100%;
