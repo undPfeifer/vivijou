@@ -3,15 +3,7 @@ import { useRoute } from 'vue-router'
 import LeadSection from '~/components/LeadSection.vue'
 import { onMounted, nextTick, computed } from 'vue'
 
-// SEO
-useSeoMeta({
-  title: () => `${title.value} | vivijou`,
-  ogTitle: () => `${title.value} | vivijou`,
-  description: () => `${leadMain.value} | vivijou`,
-  ogDescription: () => `${leadMain.value} | vivijou`,
-  ogImage: () => `${featuredImage.value}`,
-  twitterCard: 'summary_large_image',
-})
+
 
 // Get the post ID from the URL
 const route = useRoute()
@@ -39,6 +31,18 @@ const leadMain = computed(() => post.value?.acf?.lead_main ?? 'Default lead main
 const leadSub = computed(() => post.value?.acf?.lead_sub ?? 'Default lead sub')
 const leadImage = computed(() => post.value?.acf?.lead_image?.url ?? featuredImage.value)
 const creditsSub = computed(() => post.value?.acf?.credits ?? 'vivi ammann')
+
+
+// SEO
+useSeoMeta({
+  title: () => `${title.value} | vivijou`,
+  ogTitle: () => `${title.value} | vivijou`,
+  description: () => `${leadMain.value} | vivijou`,
+  ogDescription: () => `${leadMain.value} | vivijou`,
+  ogImage: () => `${featuredImage.value}`,
+  twitterCard: 'summary_large_image',
+})
+
 
 // Animate images on scroll using GSAP (client only)
 onMounted(async () => {
