@@ -25,7 +25,7 @@ mich
       </section>
 
       <p v-gsap.entrance.slide-bottom>
-        Du seist gegrüsst! Ich bin Viviane (aber lieber Vivi) Ammann und studiere Kommunikation an der Zürcher Hochschule für angewandte Wissenschaften (ZHAW) mit der Vertiefung Journalismus. Meine neugier und unermüdliche Lust zum Schreiben liess mich 2023 meine Arbeit als Grafikerin niederlegen und in die Welt der geschriebenen Medien abtauchen. Besonders interessieren mich die kleinen, vermeintlich unwichtigen Geschichten, die Grosses über uns als Gesellschaft aussagen. Diese erzähle ich am liebsten in Form von Reportagen oder Porträts.
+        Du seist gegrüsst! Ich bin Viviane (aber lieber Vivi) Ammann und studiere Kommunikation an der Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) mit der Vertiefung Journalismus. Meine Neugier und unermüdliche Lust zum Schreiben liess mich 2023 meine Arbeit als Grafikerin niederlegen und in die Welt der geschriebenen Medien abtauchen. Besonders interessieren mich die kleinen, vermeintlich unwichtigen Geschichten, die Grosses über uns als Gesellschaft aussagen. Diese erzähle ich am liebsten in Form von Reportagen oder Porträts.
       </p>
 
     </div>
