@@ -129,9 +129,13 @@ a {
 figcaption {
     display: block;
     unicode-bidi: isolate;
-    font-family: 'geist-medium' , Arial, Helvetica, sans-serif; 
+    font-family: 'geist-medium' , Arial, Helvetica, sans-serif !important; 
     font-weight: 500;
     font-size: 12px;
+    margin-bottom: 30px;
+    margin-top: -16px;
+    line-height: 1.2;
+
 }
 
   * {
@@ -210,6 +214,10 @@ figcaption {
 
   h4.wp-block-heading {
     color: #000 !important;
+  }
+
+  .post-content.main-text img {
+    margin: 20px 0px 20px 0px;
   }
 
 
