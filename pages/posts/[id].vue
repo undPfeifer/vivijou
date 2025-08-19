@@ -183,10 +183,15 @@ h1 {
 }
     p {
         columns: 2;
+        break-inside: avoid;
+
     }
 
     .main-text {
         columns: 2;
+        break-inside: avoid;
+
+
     }
 
 

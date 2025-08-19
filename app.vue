@@ -161,6 +161,8 @@ figcaption {
     font-size: 18px;
     line-height: 1.22;
     margin-bottom: 16px;
+    break-inside: avoid;
+
   }
 
   .bold {
