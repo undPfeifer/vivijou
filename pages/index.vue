@@ -64,10 +64,7 @@
         class="post"
       >
       <p class="eyebrow">
-  {{ post.categories
-      .map(id => categories?.value?.find(c => c.id === id)?.name)
-      .filter(Boolean)
-      .join(', ') }}
+        {{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }}
 </p>
 
           <NuxtLink :to="`/posts/${post.id}`"> 

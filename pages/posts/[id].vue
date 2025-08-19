@@ -110,10 +110,19 @@ onMounted(async () => {
 
 <style scoped>
 
-* {
+figure.wp-element-caption{
+  font-family: Arial, Helvetica, sans-serif;
+  color: blue;
 }
 
 
+
+* {
+}
+
+p {
+  margin-bottom: 20px;
+}
 
     img {
         margin-bottom: 36px;
@@ -121,15 +130,17 @@ onMounted(async () => {
     }
 
     .post-content p {
-      margin: 0 0 1em;
-    }
+  margin-bottom: 0px; /* sorgt für klaren Abstand */
+
+}
 
     .post-content {
-        margin-top: 2rem;
+        margin-top: 0rem;
         line-height: 1.6;
         font-size: 1rem;
-        white-space: normal;
-    }
+
+
+      }
 
     .back-link {
         display: inline-block;

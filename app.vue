@@ -126,6 +126,14 @@ a {
   text-decoration: none;
 }
 
+figcaption {
+    display: block;
+    unicode-bidi: isolate;
+    font-family: 'geist-medium' , Arial, Helvetica, sans-serif; 
+    font-weight: 500;
+    font-size: 12px;
+}
+
   * {
     
     margin: 0px;
@@ -148,6 +156,7 @@ a {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
     line-height: 1.22;
+    margin-bottom: 16px;
   }
 
   .bold {
