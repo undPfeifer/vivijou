@@ -1,70 +1,79 @@
 <template>
-    <div class="container"> 
-        <section class="about--header">
-        
-            <h1>
+  <div class="container"> 
+    <section class="about--header">
 
-über <br> 
-mich
+      <h1>
+        über <br> 
+        mich
+      </h1>
 
-</h1>
-        
-        
-            <img    
-        src="/vivi.webp" 
-        alt="" 
-        width="600" height="400" 
-        class="head-img" 
+      <img    
+        :src="imgSrc"
+        alt=""
+        width="400px"
+        class="head-img"
         v-gsap.entrance.scale
-        />
+        @mousemove="updateImage"
+        @mouseleave="resetImage"
+      />
 
-        
+    </section>
 
-
-
-      </section>
-
-      <p v-gsap.entrance.slide-bottom>
-        Du seist gegrüsst! Ich bin Viviane (aber lieber Vivi) Ammann und studiere Kommunikation an der Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) mit der Vertiefung Journalismus. Meine Neugier und unermüdliche Lust zum Schreiben liess mich 2023 meine Arbeit als Grafikerin niederlegen und in die Welt der geschriebenen Medien abtauchen. Besonders interessieren mich die kleinen, vermeintlich unwichtigen Geschichten, die Grosses über uns als Gesellschaft aussagen. Diese erzähle ich am liebsten in Form von Reportagen oder Porträts.
-      </p>
-
-    </div>
-
-   
+    <p v-gsap.entrance.slide-bottom>
+      Du seist gegrüsst! Ich bin Viviane (aber lieber Vivi) Ammann und studiere Kommunikation an der Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) mit der Vertiefung Journalismus. Meine Neugier und unermüdliche Lust zum Schreiben liess mich 2023 meine Arbeit als Grafikerin niederlegen und in die Welt der geschriebenen Medien abtauchen. Besonders interessieren mich die kleinen, vermeintlich unwichtigen Geschichten, die Grosses über uns als Gesellschaft aussagen. Diese erzähle ich am liebsten in Form von Reportagen oder Porträts.
+    </p>
+  </div>
 </template>
 
-<script setup>
 
+<script setup>
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 useHead({
-  title: 'über mich' ,
+  title: 'über mich',
   meta: [
-    {name: 'description' , content: 'Alle relevanten Information über mich und meine Ausbildungen, Studium und Lebenslauf'}
+    { name: 'description', content: 'Alle relevanten Information über mich und meine Ausbildungen, Studium und Lebenslauf' }
   ]
 })
 
+// Array of images for hover-scrub effect
+const images = [
+  '/portrait-600px.webp',
+  '/vivi-about-01_w800.webp',
+  '/google.png',
+  '/storch_small.webp',
+  '/vivi-about-800-2.webp'
+]  // add as many as you like
 
+const imgSrc = ref(images[0])
 
-    import gsap from 'gsap'
-    import ScrollTrigger from 'gsap/ScrollTrigger'
+// Update image based on mouse X position
+const updateImage = (event) => {
+  const img = event.currentTarget
+  const rect = img.getBoundingClientRect()
+  const x = event.clientX - rect.left
+  const index = Math.floor((x / rect.width) * images.length)
+  imgSrc.value = images[Math.min(index, images.length - 1)]
+}
 
+// Reset to first image on mouse leave
+const resetImage = () => {
+  imgSrc.value = images[0]
+}
 
-    import {onMounted} from 'vue'
-
-    
-onMounted( () => {
-    gsap.set('.title' , { opacity: 0 , y: 30} )
-    gsap.to('.title' , {
-        opacity: 1,
-        y: -20,
-        duration: 1,
-    } 
-        
-    )
+onMounted(() => {
+  gsap.set('.title', { opacity: 0, y: 30 })
+  gsap.to('.title', {
+    opacity: 1,
+    y: -20,
+    duration: 1,
+  })
 })
-
-
 </script>
+
+
 
 <style scoped>
 
@@ -93,7 +102,7 @@ onMounted( () => {
 
     img {
         margin-top: 20px;
-        width: 400px;
+        max-width: 400px;
         z-index: 1;
     }
 
