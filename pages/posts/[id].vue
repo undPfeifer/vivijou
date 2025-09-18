@@ -13,13 +13,13 @@ const { data: post, pending, error } = await useAsyncData(
   `post-${route.params.id}`,
   () =>
     $fetch(
-      `https://federilo.myhostpoint.ch/wp-json/wp/v2/posts/${route.params.id}?_embed`
+      `https://vuguxadu.myhostpoint.ch/wp-json/wp/v2/posts/${route.params.id}?_embed`
     )
 )
 
 // Fetch categories
 const { data: categories, error: catError } = await useAsyncData('categories', () =>
-  $fetch('https://federilo.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
+  $fetch('https://vuguxadu.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
 )
 
 // Computed fields from ACF and post
