@@ -1,5 +1,10 @@
 <template>
   <body>
+
+    <div class="loading--container">
+
+      <img src="/gif-portrait-vivi.gif" alt="" class="vivi--gif">
+    </div>
     
     <div class="container">
       <section class="header--img_container">
@@ -108,19 +113,19 @@ const selectedTag = ref<null | number>(null) // null = all posts
 
 // Fetch categories
 const { data: categories, error: catError } = await useAsyncData('categories', () =>
-  $fetch('https://federilo.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
+  $fetch('https://vuguxadu.myhostpoint.ch/wp-json/wp/v2/categories?per_page=100')
 )
 
 // Fetch tags for filter buttons
 const { data: tags, error: tagError } = await useAsyncData('tags', () =>
-  $fetch('https://federilo.myhostpoint.ch/wp-json/wp/v2/tags')
+  $fetch('https://vuguxadu.myhostpoint.ch/wp-json/wp/v2/tags')
 )
 
 // Reactive fetch for posts
 const { data: posts, pending, error } = await useAsyncData(
   () => `posts-${selectedTag.value ?? 'all'}`, // key depends on selectedTag
   () => {
-    const baseUrl = 'https://federilo.myhostpoint.ch//wp-json/wp/v2/posts?per_page=100&_fields=id,title,acf,excerpt,tags,categories'
+    const baseUrl = 'https://vuguxadu.myhostpoint.ch//wp-json/wp/v2/posts?per_page=100&_fields=id,title,acf,excerpt,tags,categories'
     return selectedTag.value
       ? $fetch(`${baseUrl}&tags=${selectedTag.value}`)
       : $fetch(baseUrl)
@@ -255,7 +260,12 @@ onMounted(async () => {
 
 <style>
 
-
+.vivi--gif{
+  position: fixed;
+  z-index: 999999000;
+  background: transparent;
+  width: 200px;
+}
 
 h1.title {
     position: absolute;
