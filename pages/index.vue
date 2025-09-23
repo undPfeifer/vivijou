@@ -3,7 +3,6 @@
 
     <div class="loading--container">
 
-      <img src="/gif-portrait-vivi.gif" alt="" class="vivi--gif">
     </div>
     
     <div class="container">
