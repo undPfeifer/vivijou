@@ -5,8 +5,48 @@ import { onMounted, nextTick, computed } from 'vue'
 
 
 
-// Get the post ID from the URL
-const route = useRoute()
+
+//---------PW PROTECTION//---------
+
+                // Get the post ID from the URL
+                const route = useRoute()
+
+                // Fetch all tags so we can find the one with slug "pw"
+                const { data: tags } = await useAsyncData('tags', () =>
+                  $fetch('https://vuguxadu.myhostpoint.ch/wp-json/wp/v2/tags?per_page=100')
+                )
+
+                // Find the "pw" tag object
+                const pwTag = computed(() => tags.value?.find(t => t.slug === 'pw'))
+
+                // Determine if this post is protected (post.tags contains pwTag.id)
+                const isProtected = computed(() =>
+                  pwTag.value ? post.value?.tags?.includes(pwTag.value.id) : false
+                )
+
+                // Client-side password gate state
+                const userPW = ref('')
+                const isUnlocked = ref(false)
+                const pwError = ref(false)
+
+                // Set your desired password here (or fetch from ACF if you want)
+                const correctPW = 'scheibenkleister'  // ← you can change this
+                const handlePWSubmit = () => {
+                  if (userPW.value === correctPW) {
+                    isUnlocked.value = true
+                    pwError.value = false
+                  } else {
+                    pwError.value = true
+                  }
+                }
+//---------PW PROTECTION//---------
+
+
+
+
+
+
+
 
 // Fetch post data from WordPress
 const { data: post, pending, error } = await useAsyncData(
@@ -81,27 +121,42 @@ onMounted(async () => {
       <div v-if="error" class="error">Failed to load post.</div>
       <div v-else-if="pending" class="loading">Loading post...</div>
       <div v-else>
-        <!-- Post Title -->
-         <p> {{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }} </p>
-        <h1 v-html="title"></h1>
 
-        <!-- metadata -->
-        <img v-if="featuredImage" :src="featuredImage" alt="Featured Image" />
+<!-- Password Gate -->
+<div v-if="isProtected && !isUnlocked" class="pw-gate">
+  <h2>This post is protected</h2>
+  <input
+    v-model="userPW"
+    type="password"
+    placeholder="Enter password"
+    class="pw-input"
+  />
+  <button @click="handlePWSubmit" class="pw-btn">Unlock</button>
 
-        <!-- Lead Section -->
-        <LeadSection
-          :text="leadMain"
-          :sub="leadSub"
-          :img="leadImage"
-          :credits="creditsSub"
-        />
+  <p v-if="pwError" class="pw-error">Wrong password</p>
+</div>
 
-        <!-- Main Post Content -->
-        <div v-html="post.content.rendered" class="post-content main-text"></div>
+<!-- Real content (visible only when unlocked OR not protected) -->
+<div v-else>
+  <p>{{ post.categories.map(id => categories.find(c => c.id === id)?.name).join(', ') }}</p>
+  <h1 v-html="title"></h1>
 
-        <!-- Back link -->
-        <NuxtLink to="/" class="back-link">← Back to posts</NuxtLink>
-      </div>
+  <img v-if="featuredImage" :src="featuredImage" alt="Featured Image" />
+
+  <LeadSection
+    :text="leadMain"
+    :sub="leadSub"
+    :img="leadImage"
+    :credits="creditsSub"
+  />
+
+  <div v-html="post.content.rendered" class="post-content main-text"></div>
+
+  <NuxtLink to="/" class="back-link">← Back to posts</NuxtLink>
+</div>
+
+</div>
+
     </div>
   </section>
 </template>
@@ -171,6 +226,32 @@ p {
 </style>
 
 <style scoped> 
+
+
+.pw-gate {
+  max-width: 400px;
+  padding: 20px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.pw-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.pw-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.pw-error {
+  margin-top: 10px;
+  color: red;
+}
+
+
 
 h4.wp-block-heading{
     color: blue;
