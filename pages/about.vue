@@ -18,9 +18,18 @@
     </section>
 
     <p v-gsap.entrance.slide-bottom>
-      Salü! Ich bin Viviane (aber lieber Vivi) Ammann und habe im Sommer 2026
-      mein Kommunikationsstudium an der Zürcher Hochschule für Angewandte
-      Wissenschaften (ZHAW) mit der Vertiefung Journalismus abgeschlossen.
+      Mein Name ist Vivi Ammann, ich bin Grafikerin und angehende Journalistin
+      aus Zürich. Das Schreiben sehe ich als natürliche Progression meiner
+      Tätigkeit als Gestalterin und hoffe, diese beiden Bereiche in Zukunft
+      beruflich verbinden zu können. Als frischgebackene Absolventin des
+      Bachelorstudiengangs Kommunikation mit Vertiefung Journalismus an der ZHAW
+      bin ich auf der Suche nach einer Möglichkeit, mir im Rahmen einer
+      Festanstellung oder eines Praktikums die Seele aus dem Leib zu schreiben
+      oder mich im Video- oder Audiobereich journalistisch zu verwirklichen. Ich
+      interessiere mich für praktisch alles auf dem Antlitz der Erde, oft sind
+      es die vermeintlich kleinen Geschichten, die Grosses über uns als
+      Gesellschaft erzählen und die mich wirklich packen. Ich freue mich über
+      jedes Hallo!
     </p>
   </div>
 </template>

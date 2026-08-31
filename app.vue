@@ -102,6 +102,23 @@ a {
 </style>
 
 <style>
+.wp-block-button > a {
+  all: unset;
+  cursor: pointer;
+
+  display: block;
+  margin-bottom: 40px !important;
+  font-family: "geist-medium", Arial, Helvetica, sans-serif !important;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 16px !important;
+
+  line-height: 1.2;
+  padding-bottom: 1px;
+  border-bottom: 2px solid var(--green);
+  width: fit-content;
+}
+
 :root {
   --green: #079210;
   --black: #ffffff;

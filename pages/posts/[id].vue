@@ -156,7 +156,7 @@ onMounted(async () => {
             class="post-content main-text"
           ></div>
 
-          <NuxtLink to="/" class="back-link">← Back to posts</NuxtLink>
+          <NuxtLink to="/" class="back-link">← zurück</NuxtLink>
         </div>
       </div>
     </div>

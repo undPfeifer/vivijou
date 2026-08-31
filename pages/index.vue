@@ -35,7 +35,7 @@
           alle
         </p>
         <p
-          v-for="tag in tags"
+          v-for="tag in [...tags].reverse()"
           :key="tag.id"
           :class="['tag', { active: selectedTag === tag.id }]"
           @click="filterPosts(tag.id)"
